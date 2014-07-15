@@ -1,0 +1,32 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\Shiao\Desktop\FreeRTOS_STM32\STM32F4_EVB\Project\STM32F4_EVB_Demo\MDK-ARM\Project.uvproj
+Project File Date:  07/15/2014
+
+<h2>Output:</h2>
+Build target 'STM32F4_EVB'
+compiling main.c...
+..\src\main.c(82): warning:  #177-D: variable "RCC_Clocks" was declared but never referenced
+    RCC_ClocksTypeDef RCC_Clocks;
+..\src\main.c(83): warning:  #177-D: variable "togglecounter" was declared but never referenced
+    uint8_t togglecounter = 0x00;
+..\src\main.c(123): warning:  #167-D: argument of type "signed char *" is incompatible with parameter of type "const char *const"
+        xTaskCreate(LED_task,(signed portCHAR *) "Implement LED",512 /* stack size */, NULL, tskIDLE_PRIORITY + 2, NULL);
+..\src\main.c(258): warning:  #1-D: last line of file ends without a newline
+  }
+..\src\main.c: 4 warnings, 0 errors
+linking...
+Program Size: Code=12896 RO-data=516 RW-data=512 ZI-data=81080  
+FromELF: creating hex file...
+".\STM32F4_EVB\STM32F4_EVB_Demo.axf" - 0 Error(s), 4 Warning(s).
+Load "C:\\Users\\Shiao\\Desktop\\FreeRTOS_STM32\\STM32F4_EVB\\Project\\STM32F4_EVB_Demo\\MDK-ARM\\STM32F4_EVB\\STM32F4_EVB_Demo.axf" 
+Erase Done.
+Programming Done.
+Verify OK.
+Load "C:\\Users\\Shiao\\Desktop\\FreeRTOS_STM32\\STM32F4_EVB\\Project\\STM32F4_EVB_Demo\\MDK-ARM\\STM32F4_EVB\\STM32F4_EVB_Demo.axf" 
+Erase Done.
+Programming Done.
+Verify OK.
