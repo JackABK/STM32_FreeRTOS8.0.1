@@ -171,7 +171,7 @@ void DebugMon_Handler(void)
 //void SysTick_Handler(void)
 //{
 //	TimingDelay_Decrement();
-//	/* Update the LocalTime by adding SYSTEMTICK_PERIOD_MS each SysTick interrupt */
+	/* Update the LocalTime by adding SYSTEMTICK_PERIOD_MS each SysTick interrupt */
 //	Time_Update();
 //}
 //#ifdef USE_USB_OTG_FS

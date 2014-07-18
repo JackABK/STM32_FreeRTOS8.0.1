@@ -103,6 +103,29 @@ static void LED_task(void *pvParameters)
   }
 }
 
+static void LCD_task(void *pvParameters){
+	//LCD_Init();
+	/* Display message on LCD *************************************************/
+	LCD_Init();
+	while(1){
+		LCD_Clear(LCD_COLOR_WHITE);
+		LCD_Colorbar();
+		LCD_SetBackColor(LCD_COLOR_WHITE);
+		LCD_SetTextColor(LCD_COLOR_BLUE);
+		LCD_DisplayStringLine(LCD_LINE_0, (uint8_t *)MESSAGE1);
+		LCD_DisplayStringLine(LCD_LINE_1, (uint8_t *)MESSAGE2);
+		LCD_DisplayStringLine(LCD_LINE_2, (uint8_t *)MESSAGE3);
+		vTaskDelay(1000);
+		LCD_Clear(LCD_COLOR_BLACK);
+		LCD_Colorbar();
+		LCD_SetBackColor(LCD_COLOR_BLACK);
+		LCD_SetTextColor(LCD_COLOR_WHITE);
+		LCD_DisplayStringLine(LCD_LINE_0, (uint8_t *)MESSAGE1);
+		LCD_DisplayStringLine(LCD_LINE_1, (uint8_t *)MESSAGE2);
+		LCD_DisplayStringLine(LCD_LINE_2, (uint8_t *)MESSAGE3);
+		vTaskDelay(1000);
+	}
+}
 
 /**
   * @brief   Main program
@@ -117,10 +140,11 @@ int main(void)
 	RCC_GetClocksFreq(&RCC_Clocks);
 	SysTick_Config(RCC_Clocks.HCLK_Frequency / 100);
 	RCC_AHB2PeriphClockCmd(RCC_AHB2Periph_RNG, ENABLE);
-	
+	PSRAM_Init();
 	SystemInit();
 	
-	xTaskCreate(LED_task,(signed portCHAR *) "Implement LED",512 /* stack size */, NULL, tskIDLE_PRIORITY + 2, NULL);
+	xTaskCreate(LED_task,(signed portCHAR *) "Implement LED",512 /* stack size */, NULL, tskIDLE_PRIORITY + 3, NULL);
+	xTaskCreate(LCD_task,(signed portCHAR *) "Implement LED",512 /* stack size */, NULL, tskIDLE_PRIORITY + 2, NULL);
 	
 	vTaskStartScheduler(); 
 	return 0;

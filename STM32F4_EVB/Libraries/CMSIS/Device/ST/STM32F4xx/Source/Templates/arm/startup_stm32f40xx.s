@@ -59,6 +59,9 @@ __heap_limit
 
                 PRESERVE8
                 THUMB
+                ;IMPORT xPortPendSVHandler
+                ;IMPORT xPortSysTickHandler
+                ;IMPORT vPortSVCHandler
 
 
 ; Vector Table Mapped to Address 0 at Reset
@@ -167,6 +170,9 @@ __Vectors       DCD     __initial_sp               ; Top of Stack
                 DCD     CRYP_IRQHandler                   ; CRYP crypto                                     
                 DCD     HASH_RNG_IRQHandler               ; Hash and Rng
                 DCD     FPU_IRQHandler                    ; FPU
+                DCD     SVC_Handler                   ; SVCall Handler
+                DCD     PendSV_Handler                ; PendSV Handler
+                DCD     SysTick_Handler               ; SysTick Handler
                                          
 __Vectors_End
 
